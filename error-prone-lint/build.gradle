@@ -1,0 +1,24 @@
+plugins {
+    id 'java-library'
+    id 'kotlin'
+}
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_1_7
+    targetCompatibility = JavaVersion.VERSION_1_7
+}
+
+dependencies {
+    compileOnly deps.kotlin.stdlib
+    // TODO 依赖拉不下来
+    compileOnly deps.lint.api
+    compileOnly deps.lint.checks
+    testImplementation deps.lint.core
+    testImplementation deps.lint.tests
+}
+
+jar {
+    manifest {
+        attributes('Lint-Registry-v2': 'com.github.foodiestudio.error_prone.lint.ErrorProneIssueRegistry')
+    }
+}
